@@ -3,9 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryan.EntityFrameworkCore.Shard", "src\Ryan.EntityFrameworkCore.Shard\Ryan.EntityFrameworkCore.Shard.csproj", "{B32FD440-D5D2-4B3D-8FC6-397B9195265E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{489A49BF-11C8-4DB4-86C0-4C7FCE3518AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.DependencyInjection", "src\Ryan.DependencyInjection\Ryan.DependencyInjection.csproj", "{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B32FD440-D5D2-4B3D-8FC6-397B9195265E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B32FD440-D5D2-4B3D-8FC6-397B9195265E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B32FD440-D5D2-4B3D-8FC6-397B9195265E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B32FD440-D5D2-4B3D-8FC6-397B9195265E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B32FD440-D5D2-4B3D-8FC6-397B9195265E} = {489A49BF-11C8-4DB4-86C0-4C7FCE3518AF}
+		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E} = {489A49BF-11C8-4DB4-86C0-4C7FCE3518AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DCAE7A9-9352-4700-9E1A-74E6B1D0570C}
