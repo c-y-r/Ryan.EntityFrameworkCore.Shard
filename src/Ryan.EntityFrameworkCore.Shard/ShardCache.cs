@@ -10,7 +10,7 @@ namespace Ryan
         /// <summary>
         /// 表名
         /// </summary>
-        public List<string> TableNames { get; } = new List<string>();
+        public List<ShardTableCache> Tables { get; } = new List<ShardTableCache>();
     }
 
     /// <summary>

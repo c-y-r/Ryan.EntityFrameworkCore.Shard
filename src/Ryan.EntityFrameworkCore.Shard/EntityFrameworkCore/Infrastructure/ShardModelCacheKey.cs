@@ -19,7 +19,7 @@ namespace Ryan.EntityFrameworkCore.Infrastructure
             Count = ShardService.GetTypeImplementGenericInterfaces(typeof(IShard<>), context.GetType()).Sum(shardType => 
             {
                 var cache = RyanService.ServiceProvider.GetService(typeof(ShardCache<>).MakeGenericType(shardType.GenericTypeArguments[0])) as ShardCache;
-                return cache.TableNames.Count;
+                return cache.Tables.Count;
             });
         }
 

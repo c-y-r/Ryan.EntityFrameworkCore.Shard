@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{489A49BF-11C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.DependencyInjection", "src\Ryan.DependencyInjection\Ryan.DependencyInjection.csproj", "{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2DF22BF9-C7B6-4D89-80F7-533C5AFCB6E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.EntityFrameworkCore.Shard.Tests", "Ryan.EntityFrameworkCore.Shard.Tests\Ryan.EntityFrameworkCore.Shard.Tests.csproj", "{1F270FD7-1FCA-4EC4-96CF-83D6B0463901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,10 @@ Global
 		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F270FD7-1FCA-4EC4-96CF-83D6B0463901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F270FD7-1FCA-4EC4-96CF-83D6B0463901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F270FD7-1FCA-4EC4-96CF-83D6B0463901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F270FD7-1FCA-4EC4-96CF-83D6B0463901}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B32FD440-D5D2-4B3D-8FC6-397B9195265E} = {489A49BF-11C8-4DB4-86C0-4C7FCE3518AF}
 		{8A0F154B-6EF0-4C34-A318-F7AE3445DA6E} = {489A49BF-11C8-4DB4-86C0-4C7FCE3518AF}
+		{1F270FD7-1FCA-4EC4-96CF-83D6B0463901} = {2DF22BF9-C7B6-4D89-80F7-533C5AFCB6E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DCAE7A9-9352-4700-9E1A-74E6B1D0570C}
