@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ryan.EntityFrameworkCore
+namespace Ryan.EntityFrameworkCore.Mapper
 {
     /// <summary>
     /// 分表对象转换

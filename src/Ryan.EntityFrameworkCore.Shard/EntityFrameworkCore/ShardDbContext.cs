@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
 using Ryan.DependencyInjection;
 using Ryan.EntityFrameworkCore.Caches;
+using Ryan.EntityFrameworkCore.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Ryan.EntityFrameworkCore
 {

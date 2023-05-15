@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Ryan.DependencyInjection;
 using Ryan.EntityFrameworkCore.Caches;
+using Ryan.EntityFrameworkCore.Mapper;
 using System;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace Ryan.EntityFrameworkCore.Shard.Tests
         {
             ServiceCollection sc = new ServiceCollection();
             sc.AddSingleton<ShardDescriptor<RyanModel>, RyanModelDescriptor>();
-            sc.AddSingleton<RyanModelModelBuilder>();
+            sc.AddSingleton<ShardModelBuilder<RyanModel>, RyanModelModelBuilder>();
             sc.AddSingleton<IShardMapper<RyanModel>, RyanModelMapper>();
             sc.AddSingleton<ShardCache<RyanModel>>();
             sc.AddTransient<ShardDbContext>();

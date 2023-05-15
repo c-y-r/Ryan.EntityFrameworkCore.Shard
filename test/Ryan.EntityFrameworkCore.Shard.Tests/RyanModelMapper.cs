@@ -1,4 +1,5 @@
 ﻿using System;
+using Ryan.EntityFrameworkCore.Mapper;
 
 namespace Ryan.EntityFrameworkCore.Shard.Tests
 {
