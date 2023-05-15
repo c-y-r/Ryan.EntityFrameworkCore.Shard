@@ -24,20 +24,30 @@ namespace Ryan
         /// <summary>
         /// 从实体中获取表名
         /// </summary>
-        public virtual IEnumerable<string> TablesFromEntities(IEnumerable<TEntity> entities)
+        public virtual IEnumerable<(string, IEnumerable<TEntity>)> TablesFromEntities(IEnumerable<TEntity> entities)
         {
-            // 获取键值对
-            var pairs = ShardExpressionVisitorFuncs.Select(func =>
+            return entities.Select(entity =>
             {
-                var v = func();
-                v.Visit(entities.Select(e => (object)e));
-                return new KeyValuePair<string, IEnumerable<string>>(v.MemberExpression.Member.Name, v.Values);
-            });
+                var val = new object[] { entity };
 
-            // 组成字典
-            var dict = new Dictionary<string, IEnumerable<string>>(pairs);
+                // 获取键值对
+                var pairs = ShardExpressionVisitorFuncs.Select(func =>
+                {
+                    var v = func();
+                    v.Visit(val);
+                    return new KeyValuePair<string, IEnumerable<string>>(v.MemberExpression.Member.Name, v.Values);
+                });
 
-            return TablesFromDictionary(dict);
+                // 组成字典
+                var dict = new Dictionary<string, IEnumerable<string>>(pairs);
+
+                // 表
+                var tableName = TablesFromDictionary(dict).FirstOrDefault();
+
+                return (tableName, entity);
+            })
+                .GroupBy(x => x.tableName)
+                .Select(g => (g.Key, g.Select(x => x.entity)));
         }
 
         /// <summary>

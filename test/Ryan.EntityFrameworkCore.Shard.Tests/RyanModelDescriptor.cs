@@ -7,6 +7,7 @@ namespace Ryan.EntityFrameworkCore.Shard.Tests
     {
         public RyanModelDescriptor()
         {
+            this.Template = "RyanModels_{Year}";
             this.Apply(x => x.Year);
         }
     }
