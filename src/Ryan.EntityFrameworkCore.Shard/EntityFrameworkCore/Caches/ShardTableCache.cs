@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 
-namespace Ryan
+namespace Ryan.EntityFrameworkCore.Caches
 {
     /// <summary>
     /// 分表缓存

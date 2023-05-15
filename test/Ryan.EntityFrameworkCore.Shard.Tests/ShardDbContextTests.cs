@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Ryan.DependencyInjection;
+using Ryan.EntityFrameworkCore.Caches;
 using System;
 using Xunit;
 
@@ -25,6 +26,8 @@ namespace Ryan.EntityFrameworkCore.Shard.Tests
         [Fact]
         public void Test1()
         {
+            ServiceProvider.GetService<ShardCache<RyanModel>>().Tables.Add(ShardTableCache.FromTableName("RyanModels_2023", typeof(RyanModel)));
+
             using var dbContext = ServiceProvider.GetService<ShardDbContext>();
             dbContext.Set<RyanModel>().Add(new RyanModel()
             {

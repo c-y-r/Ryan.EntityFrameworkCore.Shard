@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Ryan.DependencyInjection;
+using Ryan.EntityFrameworkCore.Caches;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 

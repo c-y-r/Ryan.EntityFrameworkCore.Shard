@@ -24,16 +24,7 @@ namespace Ryan.EntityFrameworkCore.Shard.Tests
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<RyanModel>(builder =>
-            {
-                builder.ToTable("RyanModels").HasKey(x => x.Id).IsClustered(false);
-
-                builder.Property(x => x.Id).ValueGeneratedOnAdd();
-                builder.Property(x => x.Year);
-                builder.Property(x => x.Name);
-            });
-
-            ServiceProvider.GetService<RyanModelModelBuilder>().Apply(modelBuilder);
+            ServiceProvider.GetService<RyanModelModelBuilder>().ApplyShard(modelBuilder);
         }
     }
 }

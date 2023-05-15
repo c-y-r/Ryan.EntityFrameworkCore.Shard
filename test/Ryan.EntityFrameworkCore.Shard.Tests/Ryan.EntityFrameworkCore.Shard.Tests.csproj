@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Ryan.EntityFrameworkCore.Shard\Ryan.EntityFrameworkCore.Shard.csproj" />
+    <ProjectReference Include="..\..\src\Ryan.EntityFrameworkCore.Shard\Ryan.EntityFrameworkCore.Shard.csproj" />
   </ItemGroup>
 
 </Project>

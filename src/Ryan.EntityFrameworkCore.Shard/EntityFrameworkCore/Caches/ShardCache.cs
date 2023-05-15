@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Ryan
+namespace Ryan.EntityFrameworkCore.Caches
 {
     /// <summary>
     /// 分表缓存
