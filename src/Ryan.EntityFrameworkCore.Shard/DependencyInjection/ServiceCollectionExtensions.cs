@@ -2,6 +2,7 @@
 using Ryan.DependencyInjection;
 using Ryan.EntityFrameworkCore.Builder;
 using Ryan.EntityFrameworkCore.Dynamic;
+using Ryan.EntityFrameworkCore.Expressions;
 using Ryan.EntityFrameworkCore.Proxy;
 using Ryan.EntityFrameworkCore.Query;
 
@@ -26,6 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddSingleton<IEntityProxyGenerator, EntityProxyGenerator>();
             services.TryAddSingleton<IDbContextEntityProxyLookupGenerator, DbContextEntityProxyLookupGenerator>();
             services.TryAddSingleton<IDbContextEntityProxyGenerator, DbContextEntityProxyGenerator>();
+            services.TryAddSingleton<IExpressionImplementationFinder, ExpressionImplementationFinder>();
             services.TryAddSingleton<IQueryableFinder, QueryableFinder>();
             services.TryAddSingleton<IShardDependency, ShardDependency>();
         }

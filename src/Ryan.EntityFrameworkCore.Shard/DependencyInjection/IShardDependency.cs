@@ -1,5 +1,6 @@
 ﻿using Ryan.EntityFrameworkCore.Builder;
 using Ryan.EntityFrameworkCore.Dynamic;
+using Ryan.EntityFrameworkCore.Expressions;
 using Ryan.EntityFrameworkCore.Proxy;
 using Ryan.EntityFrameworkCore.Query;
 
@@ -20,5 +21,6 @@ namespace Ryan.DependencyInjection
         IDbContextEntityProxyLookupGenerator DbContextEntityProxyLookupGenerator { get; }
         IDbContextEntityProxyGenerator DbContextEntityProxyGenerator { get; }
         IQueryableFinder QueryableFinder { get; }
+        IExpressionImplementationFinder ExpressionImplementationFinder { get; }
     }
 }

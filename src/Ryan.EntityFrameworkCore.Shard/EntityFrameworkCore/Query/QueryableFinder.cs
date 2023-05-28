@@ -15,8 +15,8 @@ namespace Ryan.EntityFrameworkCore.Query
         public QueryableFinder(IEntityModelBuilderAccessorGenerator entityModelBuilderAccessorGenerator)
         {
             EntityModelBuilderAccessorGenerator = entityModelBuilderAccessorGenerator;
-            MethodInfoSet = typeof(DbContext).GetMethods()[4]; // Set()
-            MethodInfoOfType = typeof(Queryable).GetMethod("OfType")!;
+            MethodInfoSet = typeof(DbContext).GetMethods().FirstOrDefault(x => x.Name == "Set"); // Set()
+            MethodInfoOfType = typeof(Queryable).GetMethods().FirstOrDefault(x => x.Name == "OfType"); // OfType
         }
 
         public virtual object CreateDbSet(DbContext context, Type implementationType)
@@ -34,7 +34,7 @@ namespace Ryan.EntityFrameworkCore.Query
         public IQueryable<TEntity> Find<TEntity>(DbContext context, Type implementationType) where TEntity : class
         {
             var set = CreateDbSet(context, implementationType);
-            return DbSetConvert<TEntity>(set);
+            return DbSetConvert<TEntity>(set).Select(x => x);
         }
     }
 }

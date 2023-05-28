@@ -1,5 +1,6 @@
 ﻿using Ryan.EntityFrameworkCore.Builder;
 using Ryan.EntityFrameworkCore.Dynamic;
+using Ryan.EntityFrameworkCore.Expressions;
 using Ryan.EntityFrameworkCore.Proxy;
 using Ryan.EntityFrameworkCore.Query;
 
@@ -18,7 +19,8 @@ namespace Ryan.DependencyInjection
             , IEntityProxyGenerator entityProxyGenerator
             , IDbContextEntityProxyLookupGenerator dbContextEntityProxyLookupGenerator
             , IDbContextEntityProxyGenerator dbContextEntityProxyGenerator
-            , IQueryableFinder queryableFinder)
+            , IQueryableFinder queryableFinder
+            , IExpressionImplementationFinder expressionImplementationFinder)
         {
 
             DynamicSourceCodeGenerator = dynamicSourceCodeGenerator;
@@ -31,6 +33,7 @@ namespace Ryan.DependencyInjection
             DbContextEntityProxyLookupGenerator = dbContextEntityProxyLookupGenerator;
             DbContextEntityProxyGenerator = dbContextEntityProxyGenerator;
             QueryableFinder = queryableFinder;
+            ExpressionImplementationFinder = expressionImplementationFinder;
         }
 
         public IDynamicSourceCodeGenerator DynamicSourceCodeGenerator { get; }
@@ -43,5 +46,6 @@ namespace Ryan.DependencyInjection
         public IDbContextEntityProxyLookupGenerator DbContextEntityProxyLookupGenerator { get; }
         public IDbContextEntityProxyGenerator DbContextEntityProxyGenerator { get; }
         public IQueryableFinder QueryableFinder { get; }
+        public IExpressionImplementationFinder ExpressionImplementationFinder { get; }
     }
 }

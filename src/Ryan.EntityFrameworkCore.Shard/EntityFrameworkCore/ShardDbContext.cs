@@ -99,28 +99,26 @@ namespace Ryan.EntityFrameworkCore
         /// <summary>
         /// 分表查询
         /// </summary>
-        public virtual IQueryable<TEntity> ShardQueryable<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class
+        public virtual IQueryable<TEntity> AsQueryable<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class
         {
             if (!ShardEntityTypes.Contains(typeof(TEntity)))
             {
                 throw new InvalidOperationException();
             }
 
-            var accessor = Dependencies.EntityModelBuilderAccessorGenerator.Create(typeof(TEntity));
-            var builder = (IEntityModelBuilder)accessor.EntityModelBuilder;
-
-            var visitors = builder.GetExpressionVisitors().ToList();
-            foreach (var visitor in visitors)
+            // 获取实现
+            var queryables = Dependencies.ExpressionImplementationFinder
+                .Find<TEntity>(expression)
+                .Select(x => Dependencies.QueryableFinder.Find<TEntity>(this, x));
+            
+            // 组合查询
+            var queryable = queryables.FirstOrDefault();
+            foreach (var nextQueryable in queryables.Skip(1))
             {
-                visitor.Visit(node: expression);
+                queryable = queryable.Union(nextQueryable);
             }
 
-            var pairs = visitors.Select(x => new KeyValuePair<string, string>(x.MemberExpression.Member.Name, x.Values.FirstOrDefault()!));
-            var dictionary = new Dictionary<string, string>(pairs);
-            var tableName = builder.GetTableName(dictionary);
-            var implementationType = accessor.Dictionary[tableName].ImplementationType;
-
-            return Dependencies.QueryableFinder.Find<TEntity>(this, implementationType);
+            return queryable;
         }
 
         /// <inheritdoc/>

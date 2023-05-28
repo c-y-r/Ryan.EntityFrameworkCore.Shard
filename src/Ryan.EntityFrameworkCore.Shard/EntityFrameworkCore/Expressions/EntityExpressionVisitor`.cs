@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Ryan.EntityFrameworkCore.Expressions
 {
@@ -54,6 +56,24 @@ namespace Ryan.EntityFrameworkCore.Expressions
             // x.Member == other.Something
             var value = MemberCache<TValue>.GetFunc(expressionOrdered.Item2)();
             return AddExpressionValue(value);
+        }
+
+        /// <inheritdoc/>
+        protected override Expression VisitMethodCall(MethodCallExpression node)
+        {
+            if (node.Method.Name == "Contains" && node.Arguments.Count == 2)
+            {
+                if (node.Arguments[1] is MemberExpression { Member: MemberInfo member } && member == MemberExpression.Member)
+                {
+                    MemberExpression memberExpression = (MemberExpression)node.Arguments[0];
+                    foreach (var value in (IEnumerable<TValue>)Expression.Lambda(memberExpression).Compile().DynamicInvoke())
+                    {
+                        AddExpressionValue(value);
+                    }
+                }
+            }
+
+            return base.VisitMethodCall(node);
         }
 
         /// <summary>
