@@ -1,4 +1,6 @@
-﻿namespace Ryan.EntityFrameworkCore.Dynamic
+﻿using System;
+
+namespace Ryan.EntityFrameworkCore.Dynamic
 {
     /// <summary>
     /// 源码生成器

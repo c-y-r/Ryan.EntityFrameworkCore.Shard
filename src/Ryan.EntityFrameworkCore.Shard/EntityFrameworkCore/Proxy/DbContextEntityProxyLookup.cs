@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Concurrent;
 
 namespace Ryan.EntityFrameworkCore.Proxy

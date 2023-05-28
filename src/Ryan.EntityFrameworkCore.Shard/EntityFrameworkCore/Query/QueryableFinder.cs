@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ryan.EntityFrameworkCore.Builder;
+using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Ryan.EntityFrameworkCore.Query
@@ -8,11 +10,13 @@ namespace Ryan.EntityFrameworkCore.Query
     {
         public IEntityModelBuilderAccessorGenerator EntityModelBuilderAccessorGenerator { get; }
         public MethodInfo MethodInfoSet { get; }
+        public MethodInfo MethodInfoOfType { get; }
 
         public QueryableFinder(IEntityModelBuilderAccessorGenerator entityModelBuilderAccessorGenerator)
         {
             EntityModelBuilderAccessorGenerator = entityModelBuilderAccessorGenerator;
             MethodInfoSet = typeof(DbContext).GetMethods()[4]; // Set()
+            MethodInfoOfType = typeof(Queryable).GetMethod("OfType")!;
         }
 
         public virtual object CreateDbSet(DbContext context, Type implementationType)
@@ -24,11 +28,7 @@ namespace Ryan.EntityFrameworkCore.Query
 
         private IQueryable<TEntity> DbSetConvert<TEntity>(object set) where TEntity : class
         {
-            var methodInfo = typeof(Queryable)
-                .GetMethod("OfType")!
-                .MakeGenericMethod(typeof(TEntity))!;
-
-            return (IQueryable<TEntity>)methodInfo.Invoke(null, new object[] { set })!;
+            return (IQueryable<TEntity>)MethodInfoOfType.MakeGenericMethod(typeof(TEntity)).Invoke(null, new object[] { set })!;
         }
 
         public IQueryable<TEntity> Find<TEntity>(DbContext context, Type implementationType) where TEntity : class

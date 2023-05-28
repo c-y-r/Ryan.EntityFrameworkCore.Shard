@@ -1,4 +1,6 @@
-﻿namespace Ryan.EntityFrameworkCore.Dynamic
+﻿using System;
+
+namespace Ryan.EntityFrameworkCore.Dynamic
 {
     /// <summary>
     /// 动态类型生成器

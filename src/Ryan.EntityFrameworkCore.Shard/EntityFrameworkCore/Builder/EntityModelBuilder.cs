@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ryan.EntityFrameworkCore.Expressions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Ryan.EntityFrameworkCore.Builder

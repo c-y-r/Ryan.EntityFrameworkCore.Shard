@@ -1,4 +1,6 @@
-﻿namespace Ryan.EntityFrameworkCore
+﻿using System;
+
+namespace Ryan.EntityFrameworkCore
 {
     /// <summary>
     /// 分表特性

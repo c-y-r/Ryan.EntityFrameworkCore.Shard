@@ -29,12 +29,5 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddSingleton<IQueryableFinder, QueryableFinder>();
             services.TryAddSingleton<IShardDependency, ShardDependency>();
         }
-
-        /// <summary>
-        /// 使用分表
-        /// </summary>
-        public static void UseShard(this IServiceProvider serviceProvider)
-        {
-        }
     }
 }

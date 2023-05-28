@@ -1,4 +1,7 @@
-﻿namespace Ryan.EntityFrameworkCore.Builder
+﻿using System;
+using System.Collections.Generic;
+
+namespace Ryan.EntityFrameworkCore.Builder
 {
     /// <summary>
     /// 实体实现字典

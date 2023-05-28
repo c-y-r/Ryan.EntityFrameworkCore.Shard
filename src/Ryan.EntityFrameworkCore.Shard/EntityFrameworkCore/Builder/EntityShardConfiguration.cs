@@ -1,4 +1,5 @@
 ﻿using Ryan.EntityFrameworkCore.Dynamic;
+using System;
 
 namespace Ryan.EntityFrameworkCore.Builder
 {

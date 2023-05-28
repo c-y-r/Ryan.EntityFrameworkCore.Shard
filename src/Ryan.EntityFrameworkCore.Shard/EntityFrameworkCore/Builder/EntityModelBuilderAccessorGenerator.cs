@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Ryan.EntityFrameworkCore.Infrastructure;
+using System;
 
 namespace Ryan.EntityFrameworkCore.Builder
 {

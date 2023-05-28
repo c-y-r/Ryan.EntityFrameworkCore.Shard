@@ -1,4 +1,6 @@
-﻿namespace Ryan.EntityFrameworkCore.Builder
+﻿using System;
+
+namespace Ryan.EntityFrameworkCore.Builder
 {
     /// <summary>
     /// 实体模型构建访问器
