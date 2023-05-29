@@ -121,6 +121,25 @@ namespace Ryan.EntityFrameworkCore
             return queryable;
         }
 
+        /// <summary>
+        /// 分表查询
+        /// </summary>
+        public virtual IEnumerable<TEntity> AsQueryable<TEntity>(Expression<Func<TEntity, bool>> expression, Expression<Func<TEntity, bool>> predicate) where TEntity : class
+        {
+            if (!ShardEntityTypes.Contains(typeof(TEntity)))
+            {
+                throw new InvalidOperationException();
+            }
+
+            // 获取实现
+            var queryables = Dependencies.ExpressionImplementationFinder
+                .Find<TEntity>(expression)
+                .Select(x => Dependencies.QueryableFinder.Find<TEntity>(this, x));
+
+            // 组合查询
+            return queryables.SelectMany(x => x.Where(predicate).ToList());
+        }
+
         /// <inheritdoc/>
         public override EntityEntry Add(object entity)
         {
@@ -283,6 +302,12 @@ namespace Ryan.EntityFrameworkCore
             lookup.Changed();
 
             return result;
+        }
+
+        public override void Dispose()
+        {
+            Dependencies.DbContextEntityProxyLookupGenerator.Delete(this);
+            base.Dispose();
         }
     }
 }

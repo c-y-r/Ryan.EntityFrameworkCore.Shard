@@ -19,22 +19,22 @@ namespace Ryan.EntityFrameworkCore.Query
             MethodInfoOfType = typeof(Queryable).GetMethods().FirstOrDefault(x => x.Name == "OfType"); // OfType
         }
 
-        public virtual object CreateDbSet(DbContext context, Type implementationType)
+        public virtual object DbSet(DbContext context, Type implementationType)
         {
             var methodInfo = MethodInfoSet.MakeGenericMethod(implementationType)!;
 
             return methodInfo.Invoke(context, null)!;
         }
 
-        private IQueryable<TEntity> DbSetConvert<TEntity>(object set) where TEntity : class
+        private IQueryable<TEntity> OfType<TEntity>(object set) where TEntity : class
         {
             return (IQueryable<TEntity>)MethodInfoOfType.MakeGenericMethod(typeof(TEntity)).Invoke(null, new object[] { set })!;
         }
 
         public IQueryable<TEntity> Find<TEntity>(DbContext context, Type implementationType) where TEntity : class
         {
-            var set = CreateDbSet(context, implementationType);
-            return DbSetConvert<TEntity>(set).Select(x => x);
+            var set = DbSet(context, implementationType);
+            return OfType<TEntity>(set);
         }
     }
 }
